@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account - Chat Example</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="panel panel-default" style="padding-top: 40px">
+                <h2>Create a new Account</h2>
+                <p class="text-muted">Create a new account with your email</p>
+
+                {{if .Error}}
+                        <b class="text-danger text-center">{{.Message}}</b><br>
+                {{else}}
+                        <b class="text-success text-center">{{.Message}}</b><br>
+                {{end}}
+
+                <form method="post" action="/user/join">
+
+                    <input type="text" name="name" placeholder="Name"
+                           class="form-control"><br>
+                    <input type="text" name="email" placeholder="Email"
+                           class="form-control"><br>
+                    <input type="password" name="password" placeholder="Password"
+                           class="form-control"><br>
+
+                    <p class="text-center">I already have an account? <a href="/authenticate">Sign In</a></p>
+                    <p class="text-center"><button name="create_account" class="btn btn-primary text-center">
+                        <b>Create Account</b>
+                    </button></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

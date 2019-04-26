@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Example</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+</head>
+
+<style type="text/css">
+    #chat-window {
+        min-height: 200px;
+        border: #0b2e13 3px solid;
+        padding: 10px;
+    }
+</style>
+<body>
+
+<div class="container-fluid">
+    <div class="col-sm-6 offset-sm-3">
+        <div class="panel panel-default" style="padding-top: 40px">
+
+            <h2 class="text-center">Hey! Welcome {{.Data.Name}}</h2><br />
+
+            <p>Chat with:</p>
+            <input type="text" id="friend_email" placeholder="Enter friend email" class="form-control">
+            <br />
+            <div id="chat-window">
+
+            </div>
+            <input type="text" class="form-control" name="message_box"
+                   id="message_box" placeholder="Type your message..." style="margin-top: 10px;">
+            <button id="send" class="btn btn-primary" style="margin-top: 5px" onclick="sendMessage()">SEND</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../static/chat.js"></script>
+</body>
+</html>

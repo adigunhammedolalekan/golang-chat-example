@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile - Backend Test</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="col-sm-6 offset-sm-3">
+        <div class="panel panel-default" style="padding-top: 40px">
+            <h2>Hey, {{.Data.Profile.Fullname}}!</h2>
+            <p class="text-muted">You are Welcome. Below are your details</p>
+
+            <p>Full Name : <b>{{.Data.Profile.Fullname}}</b></p>
+            <p>Email : <b>{{.Data.Email}}</b></p>
+            <p>Address : <b>{{.Data.Profile.Address}}</b></p>
+            <p>Telephone : <b>{{.Data.Profile.Telephone}}</b></p>
+            <hr>
+
+            <a href="/account/update" class="btn btn-dark">Edit Profile Info</a>
+            <a href="/signout" class="btn btn-link">Log Out</a>
+        </div>
+    </div>
+</body>
+</html>
