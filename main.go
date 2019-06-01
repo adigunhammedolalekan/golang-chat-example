@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 )
@@ -193,6 +194,10 @@ func (handler *WebHandler) renderHomePage(w http.ResponseWriter, r *http.Request
 	})
 }
 
+func (handler *WebHandler) indexHandler(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/authenticate", http.StatusPermanentRedirect)
+}
+
 func (handler *WebHandler) handleWebSocket(w http.ResponseWriter, r *http.Request)  {
 	_ = handler.ws.HandleHttpRequest(w, r)
 }
@@ -230,6 +235,9 @@ func main() {
 
 	router.HandleFunc("/home", handler.renderHomePage)
 
+	// redirect to login when '/' is visited
+	router.HandleFunc("/", handler.indexHandler)
+
 	// handle websocket messages
 	handler.ws.Handle("/user/{id}", func(context *luna.Context) {
 		bytes, ok := context.Data . ([]byte)
@@ -241,7 +249,11 @@ func main() {
 		}
 	})
 
-	addr := "0.0.0.0:9005"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "9005"
+	}
+	addr := fmt.Sprintf("0.0.0.0:%s", port)
 	log.Printf("Server started at %s", addr)
 	if err := http.ListenAndServe(addr, router); err != nil {
 		log.Fatal("failed to start http server")
