@@ -1,6 +1,7 @@
 function Chat(ws) {
 
     ws.onopen = function () {
+        console.log("Opened");
         const path = "/user/" + id;
         const payload = {"action": "subscribe", "path" : path};
         ws.send(JSON.stringify(payload))
