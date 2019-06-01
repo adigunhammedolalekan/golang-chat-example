@@ -63,9 +63,9 @@ type User struct {
 	Password string `json:"password"`
 }
 
-// WebHandler is app brain
-// featuring the database, websocket handler and
-// a pointer to parsed templates
+// WebHandler is the app brain
+// featuring a database, websocket handler and
+// a pointer to html templates
 type WebHandler struct {
 	db *FakeDatabase // database
 	ws *luna.Luna // luna websocket handler
