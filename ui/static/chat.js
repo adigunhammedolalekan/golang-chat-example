@@ -55,7 +55,7 @@ function appendMessage(text) {
 
 // get user email from cookie
 const id = document.cookie.split("=")[1];
-const localWsUrl = "ws://localhost:9005/ws/connect?user=" + id; // use this when testing locally
+const localWsUrl = "wss://localhost:9005/ws/connect?user=" + id; // use this when testing locally
 const remoteWsUrl = "ws://go-chat-example.herokuapp.com/ws/connect?user=" + id;
-const ws = new WebSocket(remoteWsUrl);
+const ws = new WebSocket(localWsUrl);
 Chat(ws);
